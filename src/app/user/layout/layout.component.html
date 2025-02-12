@@ -1,0 +1,67 @@
+<div class="card min-md:fixed w-full">
+	<p-menubar [model]="items">
+		<ng-template #start>
+			<img
+				class="h-10"
+				src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/150px-Instagram_logo.svg.png"
+				alt="instagram"
+			/>
+		</ng-template>
+		<ng-template #item let-item let-root="root">
+			<a
+				pRipple
+				class="flex items-center p-menubar-item-link"
+				[routerLink]="item.routerLink"
+			>
+				<i [ngClass]="item.icon"></i>
+				<span>{{ item.label }}</span>
+				<p-badge
+					*ngIf="item.badge"
+					[ngClass]="{ 'ml-auto': !root, 'ml-2': root }"
+					[value]="item.badge"
+				/>
+				<span
+					*ngIf="item.shortcut"
+					class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1"
+					>{{ item.shortcut }}</span
+				>
+				<i
+					*ngIf="item.items"
+					[ngClass]="[
+						'ml-auto pi',
+						root ? 'pi-angle-down' : 'pi-angle-right'
+					]"
+				></i>
+			</a>
+		</ng-template>
+		<ng-template #end>
+			<div class="flex justify-center items-center gap-2">
+				<p-toggleswitch
+					[(ngModel)]="checked"
+					(ngModelChange)="toggleDarkMode()"
+				>
+					<ng-template #handle let-checked="checked">
+						<i
+							[ngClass]="[
+								'!text-xs',
+								'pi',
+								checked ? 'pi pi-moon' : 'pi pi-sun'
+							]"
+						></i>
+					</ng-template>
+				</p-toggleswitch>
+			</div>
+		</ng-template>
+	</p-menubar>
+</div>
+<router-outlet />
+
+<div class="card !bottom-0 fixed max-md:w-full hidden max-md:block z-[9999] bg-gray-700">
+    <div class="flex justify-evenly py-2">
+        <p-button icon="pi pi-home" styleClass="!bg-white !border-0 !text-black !font-bold" [routerLink]="[RedirectRoutes.user.home]"/>
+        <p-button icon="pi pi-search" styleClass="!bg-white !border-0 !text-black" [routerLink]="[RedirectRoutes.user.search]"/>
+		<p-button icon="pi pi-file-plus" styleClass="!bg-white !border-0 !text-black" [routerLink]="[RedirectRoutes.user.create]"/>
+        <p-button icon="pi pi-video" styleClass="!bg-white !border-0 !text-black" [routerLink]="[RedirectRoutes.user.home]" />
+		<p-button icon="pi pi-user" styleClass="!bg-white !border-0 !text-black" [routerLink]="[RedirectRoutes.user.profile]"/>
+    </div>
+</div>
