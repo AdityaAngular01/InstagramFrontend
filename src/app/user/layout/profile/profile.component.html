@@ -1,0 +1,36 @@
+<div class="flex justify-center p-4 max-md:p-2">
+    <div class="min-md:w-8/12 max-md:w-full min-h-[100vh] rounded-lg">
+        <div class="flex justify-evenly items-center max-md:items-start min-md:min-h-50">
+            <div class="w-1/8 max-md:w-1/4 p-[2px] bg-red-400 rounded-full">
+                <img [src]="user?.profilePicture" class="w-full rounded-full" alt="">
+            </div>
+            <div class="w-5/8 max-md:3/4 gap-2">
+                <h1 [innerText]="user?.fullName" class="text-2xl"></h1>
+                <div class="flex justify-between w-5/6">
+                    <div class="max-md:flex max-md:flex-col flex gap-1">
+                        <span class="font-bold" [innerText]="user?.postsCount"></span>
+                        <span>posts</span>
+                    </div>
+                    <div class="max-md:flex max-md:flex-col flex gap-1">
+                        <span class="font-bold" [innerText]="user?.followersCount"></span>
+                        <span>followers</span>
+                    </div>
+                    <div class="max-md:flex max-md:flex-col flex gap-1">
+                        <span class="font-bold" [innerText]="user?.followingCount"></span>
+                        <span>following</span>
+                    </div>
+                </div>
+                <p [innerText]="user?.bio" class="text-md text-gray-600"></p>
+            </div>
+        </div>
+        <hr class="text-transparent my-5">
+        <div class="grid grid-cols-3 grid-rows-1">
+
+        </div>
+        <div class="grid grid-cols-3 gap-1 m-0">
+            @for(item of getArray(25); track $index){
+            <div class="max-md:h-30 h-80 bg-red-300"></div>
+            }
+        </div>
+    </div>
+</div>
