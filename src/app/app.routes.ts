@@ -13,6 +13,7 @@ import {HomeComponent} from './user/layout/home/home.component'
 import { UserPostsComponent } from './user/layout/profile/user-posts/user-posts.component';
 import { UserReelsComponent } from './user/layout/profile/user-reels/user-reels.component';
 import { UserTagsPostsComponent } from './user/layout/profile/user-tags-posts/user-tags-posts.component';
+import { ViewPostComponent } from './ReusableComponent/view-post/view-post.component';
 export const routes: Routes = [
     {
         path: '',
@@ -68,7 +69,7 @@ export const routes: Routes = [
                 component: ProfileComponent,
                 children:[
                     {
-                        path: 'posts',
+                        path: '',
                         component: UserPostsComponent
                     },
                     {
@@ -79,12 +80,12 @@ export const routes: Routes = [
                         path: 'tags',
                         component: UserTagsPostsComponent
                     },
-                    {
-                        path: '',
-                        redirectTo: 'posts',
-                        pathMatch: 'full'
-                    }
+
                 ]
+            },
+            {
+                path: 'view/post',
+                component: ViewPostComponent
             },
             {
                 path: '',
