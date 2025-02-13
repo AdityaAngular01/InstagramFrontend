@@ -3,3 +3,7 @@
         display: block;
     }
 }
+
+::ng-deep .p-tablist-tab-list{
+
+}

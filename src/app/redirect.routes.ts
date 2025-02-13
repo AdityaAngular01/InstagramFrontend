@@ -7,20 +7,28 @@ const search:string = 'search';
 const messages: string = 'messages';
 const notification: string = 'notification';
 const create: string = 'create';
+const posts:string = 'posts';
+const reels:string = 'reels';
+const tags: string = 'tags';
 
 
 export const RedirectRoutes = {
 	auth: {
-		base: '',
+		base: "",
 		login: `/${auth}/${login}`,
 		register: `/${auth}/${register}`,
 	},
-	user:{
+	user: {
 		home: `/${home}`,
 		search: `/${search}`,
-        messages: `/${messages}`,
-        notification: `/${notification}`,
-        create: `/${create}`,
-        profile: `/${profile}`
-	}
+		messages: `/${messages}`,
+		notification: `/${notification}`,
+		create: `/${create}`,
+		profile: {
+			base: `/${profile}`,
+			posts: `/${profile}/${posts}`,
+			reels: `/${profile}/${reels}`,
+			tags: `/${profile}/${tags}`,
+		},
+	},
 };

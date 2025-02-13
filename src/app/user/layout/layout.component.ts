@@ -73,7 +73,7 @@ export class LayoutComponent implements OnInit {
 					{
 						label: "Profile",
 						icon: "pi pi-user",
-						routerLink: RedirectRoutes.user.profile,
+						routerLink: RedirectRoutes.user.profile.base,
 					},
 					{
 						label: "Logout",

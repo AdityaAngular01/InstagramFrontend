@@ -10,6 +10,9 @@ import { CreateComponent } from './user/layout/create/create.component';
 import { SearchComponent } from './user/layout/search/search.component';
 import {NotificationComponent} from './user/layout/notification/notification.component'
 import {HomeComponent} from './user/layout/home/home.component'
+import { UserPostsComponent } from './user/layout/profile/user-posts/user-posts.component';
+import { UserReelsComponent } from './user/layout/profile/user-reels/user-reels.component';
+import { UserTagsPostsComponent } from './user/layout/profile/user-tags-posts/user-tags-posts.component';
 export const routes: Routes = [
     {
         path: '',
@@ -62,7 +65,26 @@ export const routes: Routes = [
             },
             {
                 path: 'profile',
-                component: ProfileComponent
+                component: ProfileComponent,
+                children:[
+                    {
+                        path: 'posts',
+                        component: UserPostsComponent
+                    },
+                    {
+                        path: 'reels',
+                        component: UserReelsComponent
+                    },
+                    {
+                        path: 'tags',
+                        component: UserTagsPostsComponent
+                    },
+                    {
+                        path: '',
+                        redirectTo: 'posts',
+                        pathMatch: 'full'
+                    }
+                ]
             },
             {
                 path: '',
