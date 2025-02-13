@@ -25,6 +25,15 @@ export class LocalStorageService {
 		localStorage.removeItem("token");
 	}
 
+	setThemeDark(value:boolean){
+		localStorage.setItem("theme-dark", JSON.stringify(value));
+	}
+
+	isThemeDark(): boolean{
+		const themeDark = localStorage.getItem("theme-dark");
+        return themeDark? JSON.parse(themeDark) : false;
+	}
+
 	isAuthenticated(): boolean {
 		return !!this.token;
 	}
