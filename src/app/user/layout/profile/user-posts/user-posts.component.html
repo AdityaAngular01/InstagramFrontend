@@ -1,5 +1,27 @@
-<div class="grid grid-cols-3 gap-1 m-0">
-			@for(item of getArray(25); track $index){
-			<div class="max-md:h-30 h-80 bg-red-300"></div>
-			}
+<app-loader *ngIf="!posts" />
+
+<div class="grid grid-cols-3 gap-1 m-0" *ngIf="posts">
+	@for(post of posts; track $index){
+
+	<div class="relative max-md:h-30 h-80 group" [routerLink]="[RedirectRoutes.user.viewPost]" [queryParams]="{user: post.userId.username, q:post._id}">
+		<!-- Image -->
+		<img [src]="post.imageUrl" class="w-full h-full object-cover" />
+
+		<div
+			class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+			<button class="text-white">
+				<i class="pi pi-heart"></i>
+				{{post.likesCount}}
+			</button>
+			<button class="text-white">
+				<i class="pi pi-comment"></i>
+				{{post.commentsCount}}
+			</button>
+			<button class="text-white">
+				<i class="pi pi-eye"></i>
+			</button>
 		</div>
+	</div>
+
+	}
+</div>
