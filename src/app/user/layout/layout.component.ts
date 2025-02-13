@@ -34,8 +34,10 @@ import { LocalStorageService } from "../../service/data/LocalStorage/local-stora
 })
 export class LayoutComponent implements OnInit {
 	items: MenuItem[] | undefined;
-	checked: boolean = false;
-	protected RedirectRoutes=  RedirectRoutes;
+	protected RedirectRoutes = RedirectRoutes;
+	private localStorageService: LocalStorageService =
+	LocalStorageService.getInstance();
+	protected checked: boolean = this.localStorageService.isThemeDark();
 	constructor(private router: Router) {}
 	ngOnInit() {
 		this.items = [
@@ -86,9 +88,13 @@ export class LayoutComponent implements OnInit {
 				],
 			},
 		];
+		if (this.checked) {
+			this.toggleDarkMode();
+		}
 	}
 
 	toggleDarkMode() {
+		this.localStorageService.setThemeDark(this.checked);
 		const element = document.querySelector("html");
 		element!.classList.toggle("my-app-dark");
 	}

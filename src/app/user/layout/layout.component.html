@@ -1,5 +1,6 @@
 <!-- <div class="card min-md:fixed w-full"> -->
-<div class="card">
+<section class="mb-[75px]">
+	<div class="card">
 	<p-menubar [model]="items">
 		<ng-template #start>
 			<img
@@ -57,13 +58,14 @@
 </div>
 
 <router-outlet />
+</section>
 
 <div class="card !bottom-0 fixed max-md:w-full hidden max-md:block bg-gray-700">
     <div class="flex justify-evenly py-2">
         <p-button icon="pi pi-home" styleClass="!bg-white !border-0 !text-black !font-bold" [routerLink]="[RedirectRoutes.user.home]"/>
         <p-button icon="pi pi-search" styleClass="!bg-white !border-0 !text-black" [routerLink]="[RedirectRoutes.user.search]"/>
 		<p-button icon="pi pi-file-plus" styleClass="!bg-white !border-0 !text-black" [routerLink]="[RedirectRoutes.user.create]"/>
-        <p-button icon="pi pi-video" styleClass="!bg-white !border-0 !text-black" [routerLink]="[RedirectRoutes.user.home]" />
+        <p-button icon="pi pi-bell" styleClass="!bg-white !border-0 !text-black" [routerLink]="[RedirectRoutes.user.notification]" />
 		<p-button icon="pi pi-user" styleClass="!bg-white !border-0 !text-black" [routerLink]="[RedirectRoutes.user.profile.base]"/>
     </div>
 </div>
