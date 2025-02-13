@@ -7,9 +7,10 @@ const search:string = 'search';
 const messages: string = 'messages';
 const notification: string = 'notification';
 const create: string = 'create';
-const posts:string = 'posts';
+const posts:string = '';
 const reels:string = 'reels';
 const tags: string = 'tags';
+const viewPost: string = 'view/post';
 
 
 export const RedirectRoutes = {
@@ -30,5 +31,6 @@ export const RedirectRoutes = {
 			reels: `/${profile}/${reels}`,
 			tags: `/${profile}/${tags}`,
 		},
+		viewPost: `/${viewPost}`,
 	},
 };
