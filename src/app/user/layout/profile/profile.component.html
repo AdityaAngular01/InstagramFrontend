@@ -1,4 +1,6 @@
-<div class="flex justify-center p-4 max-md:p-2">
+<app-loader *ngIf="!user"/>
+
+<div class="flex justify-center p-4 max-md:p-2" *ngIf="user">
 	<div class="min-md:w-8/12 max-md:w-full min-h-[100vh] rounded-lg">
 		<div
 			class="flex justify-evenly items-center max-md:items-start min-md:min-h-50"
@@ -41,11 +43,11 @@
 		<hr class="text-transparent my-5" />
 
         <div class="card">
-	        <p-tabs [value]="RedirectRoutes.user.profile.posts" class="mb-1">
-		        <p-tablist>
+	        <p-tabs [value]="RedirectRoutes.user.profile.posts" class="mb-2">
+		        <p-tablist class="">
 			        @for(tab of tabs; track tab.route){
-			            <p-tab [value]="tab.route" [routerLink]="tab.route">
-				            <i [class]="tab.icon"></i>
+			            <p-tab [value]="tab.route" [routerLink]="tab.route" class="w-1/3">
+				            <i [class]="tab.icon" class=""></i>
 				            <!-- <span>{{ tab.label }}</span> -->
 			            </p-tab>
 			        }

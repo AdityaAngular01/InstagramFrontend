@@ -5,9 +5,10 @@ import { UserService } from "../../../service/http/user/user.service";
 import { TabsModule } from "primeng/tabs";
 import { CommonModule } from '@angular/common';
 import { RedirectRoutes } from '../../../redirect.routes';
+import { LoaderComponent } from '../../../ReusableComponent/loader/loader.component';
 @Component({
 	selector: "app-profile",
-	imports: [TabsModule, CommonModule, RouterLink, RouterOutlet],
+	imports: [TabsModule, CommonModule, RouterLink, RouterOutlet, LoaderComponent],
 	templateUrl: "./profile.component.html",
 	styleUrl: "./profile.component.css",
 })

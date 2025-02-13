@@ -5,5 +5,8 @@
 }
 
 ::ng-deep .p-tablist-tab-list{
-
+    justify-content: space-around;
+}
+::ng-deep .p-tab{
+    justify-content: center !important;
 }
