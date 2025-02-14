@@ -61,11 +61,7 @@
 </section>
 
 <div class="card !bottom-0 fixed max-md:w-full hidden max-md:block bg-gray-700">
-    <div class="flex justify-evenly py-2">
-        <p-button icon="pi pi-home" styleClass="!bg-white !border-0 !text-black !font-bold" [routerLink]="[RedirectRoutes.user.home]"/>
-        <p-button icon="pi pi-search" styleClass="!bg-white !border-0 !text-black" [routerLink]="[RedirectRoutes.user.search]"/>
-		<p-button icon="pi pi-file-plus" styleClass="!bg-white !border-0 !text-black" [routerLink]="[RedirectRoutes.user.create]"/>
-        <p-button icon="pi pi-bell" styleClass="!bg-white !border-0 !text-black" [routerLink]="[RedirectRoutes.user.notification]" />
-		<p-button icon="pi pi-user" styleClass="!bg-white !border-0 !text-black" [routerLink]="[RedirectRoutes.user.profile.base]"/>
+    <div class="grid grid-cols-5 text-center py-2">
+        <p-button [icon]="mobNav.icon" styleClass="!bg-white !border-0 !text-black !font-bold" [routerLink]="mobNav.routerLink" *ngFor="let mobNav of mobileNavItems"/>
     </div>
 </div>

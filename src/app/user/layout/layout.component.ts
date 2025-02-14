@@ -33,11 +33,12 @@ import { LocalStorageService } from "../../service/data/LocalStorage/local-stora
 	styleUrl: "./layout.component.css",
 })
 export class LayoutComponent implements OnInit {
-	items: MenuItem[] | undefined;
+	protected items: MenuItem[] | undefined;
 	protected RedirectRoutes = RedirectRoutes;
 	private localStorageService: LocalStorageService =
 	LocalStorageService.getInstance();
 	protected checked: boolean = this.localStorageService.isThemeDark();
+	protected mobileNavItems: MenuItem[] | undefined;
 	constructor(private router: Router) {}
 	ngOnInit() {
 		this.items = [
@@ -65,7 +66,7 @@ export class LayoutComponent implements OnInit {
 			},
 			{
 				label: "Create",
-				icon: "pi pi-file-plus",
+				icon: "pi pi-plus",
 				routerLink: RedirectRoutes.user.create,
 			},
 			{
@@ -86,6 +87,28 @@ export class LayoutComponent implements OnInit {
 						},
 					},
 				],
+			},
+		];
+		this.mobileNavItems = [
+			{
+				icon: "pi pi-home",
+				routerLink: [RedirectRoutes.user.home],
+			},
+			{
+				icon: "pi pi-search",
+				routerLink: [RedirectRoutes.user.search],
+			},
+			{
+				icon: "pi pi-plus",
+				routerLink: [RedirectRoutes.user.create],
+			},
+			{
+				icon: "pi pi-bell",
+				routerLink: [RedirectRoutes.user.notification],
+			},
+			{
+				icon: "pi pi-user",
+				routerLink: [RedirectRoutes.user.profile.base],
 			},
 		];
 		if (this.checked) {

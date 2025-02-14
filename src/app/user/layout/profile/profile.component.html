@@ -48,7 +48,7 @@
 			        @for(tab of tabs; track tab.route){
 			            <p-tab [value]="tab.route" [routerLink]="tab.route" class="w-1/3">
 				            <i [class]="tab.icon" class=""></i>
-				            <!-- <span>{{ tab.label }}</span> -->
+				            <span class="max-md:hidden">{{ tab.label }}</span>
 			            </p-tab>
 			        }
 		        </p-tablist>
