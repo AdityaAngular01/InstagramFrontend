@@ -1,25 +1,65 @@
-<div class="mb-4 p-2 flex flex-col items-center justify-center">
-    <p-card class="max-md:w-[25rem] w-6/9 mb-1">
-        <div class="flex justify-start items-center gap-2">
-            <img alt="Card" class="w-[50px] rounded-full" [src]="post?.userId?.profilePicture" />
-            <h4 class="text-lg font-bold">{{post?.userId?.username}}</h4>
-        </div>
-    </p-card>
-    <p-card class="max-md:w-[25rem] w-6/9 overflow-hidden rounded-2xl">
-        <ng-template #header>
-            <img alt="Card" class="max-md:w-full w-1/2" [src]="post?.imageUrl" />
-        </ng-template>
-        <ng-template #title> Advanced Card </ng-template>
-        <ng-template #subtitle> Card subtitle </ng-template>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-            quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
-        </p>
-        <ng-template #footer>
-            <div class="flex gap-4 mt-1">
-                <p-button label="Cancel" severity="secondary" class="w-full" [outlined]="true" styleClass="w-full" />
-                <p-button label="Save" class="w-full" styleClass="w-full" />
+<app-loader *ngIf="!post" />
+<div class="m-4 p-2 flex flex-col items-center justify-center" *ngIf="post">
+    <div class="max-md:w-[25rem] w-4/9 overflow-hidden rounded-2xl border-1 border-gray-400 py-3 px-2">
+        <div class="flex justify-start items-center gap-2 py-2 ps-1">
+            <img alt="Card" class="w-[45px] rounded-full" [src]="post?.userId?.profilePicture" />
+            <div>
+                <h4 class="text-lg font-bold">{{post?.userId?.username}}</h4>
+                <p class="text-[14px] text-gray-800">{{post.createdAt | date: 'MMM dd, YYYY'}}</p>
             </div>
-        </ng-template>
-    </p-card>
+        </div>
+        <div class="min-w-full flex flex-col">
+            <img alt="Card" class="max-md:w-full rounded-xl" [src]="post?.imageUrl" />
+            <div class="py-3 ps-2 w-full">
+                <div class="flex justify-between gap-2 text-xl">
+                    <div>
+                        <span class="overflow-hidden">
+                            <i class="pi pi-heart-fill" style="font-size: 20px;"
+                                [ngClass]="{'text-red-500 hover:text-gray-600': isLiked, 'text-gray-600 hover:text-red-500': !isLiked}" (click)="!isLiked ? onLikePost():onUnlikePost()"></i>
+                            {{post?.likesCount}}
+                        </span>
+                        <span>
+                            <i class="pi pi-comment" style="font-size: 20px;"></i> {{post?.commentsCount}}
+                        </span>
+                    </div>
+                    <div>
+                        <span class="">
+                            <i class="pi pi-bookmark" style="font-size: 20px;"></i> {{post?.dateCreated | date:'short'}}
+                        </span>
+                    </div>
+                </div>
+                <p class="text-[16px] font-medium py-2">{{post?.caption}}</p>
+            </div>
+        </div>
+        <div class="mb-2">
+            <div *ngFor="let comment of post.comments">
+                <section class="flex py-2 gap-3">
+                    <div class="max-md:w-1/9 w-1/15">
+                        <img [src]="comment?.userId?.profilePicture" class="rounded-full" alt="">
+                    </div>
+                    <div class="w-full">
+                        <h6 class="font-bold flex justify-between">
+                            <span [innerText]="comment?.userId?.username"></span>
+                            <span>
+                                <i class="pi pi-trash hover:text-red-500" (click)="onDeleteComment(comment._id)"></i>
+                            </span>
+                        </h6>
+
+                        <p class="text-gray-500" [innerText]="comment?.text"></p>
+                    </div>
+                </section>
+            </div>
+            <!-- Add New Comment -->
+            <form [formGroup]="commentForm">
+                <div class="flex justify-start comment">
+                <p-iconfield iconPosition="right">
+                    <input type="text" pInputText placeholder="Add Comment" styleClass="w-full" formControlName="text"/>
+                    <p-inputicon>
+                        <i class="pi pi-send" (click)="onSubmitComment()"></i>
+                    </p-inputicon>
+                </p-iconfield>
+            </div>
+            </form>
+        </div>
+    </div>
 </div>
